@@ -1,117 +1,119 @@
-📘 Day 05 — Modern Frontend Setup (React + TypeScript)
-🎯 Core Goal
+# 📘 Day 05 — Modern Frontend Setup (React + TypeScript)
 
-Set up a modern frontend environment using React + TypeScript, understand typed components, and build a simple PredictionForm that captures user inputs and displays a mock prediction.
-This prepares the foundation for backend–frontend integration on Day 06 and Day 07.
+## 🎯 Core Goal
 
-🧠 Reading / Theory / Topics to Cover
+Set up a modern frontend environment using **React + TypeScript**, understand typed components, and build a simple `PredictionForm` that captures user inputs and displays a mock prediction.
+This forms the foundation for backend–frontend integration on **Day 06** and **Day 07**.
 
-Before jumping into code, review the core concepts for today:
+---
 
-1. React Component Model
+## 🧠 Reading / Theory / Topics to Cover
 
-What components are
+### 1. **React Component Model**
 
-How state works
+* What components are
+* How state works
+* How user inputs update state
+* Declarative UI model
 
-How user inputs update component state
+### 2. **TypeScript Basics (for React)**
 
-Declarative UI model
+* `type` vs `interface`
+* Typed state and props
+* Why TypeScript reduces frontend errors
 
-2. TypeScript Basics (for React)
+### 3. **Vite (Project Setup Tool)**
 
-type vs interface
+* Why Vite is used for modern React apps
+* How Vite scaffolds templates
+* Running and building Vite apps
 
-Typed state and props
+---
 
-Why TypeScript helps avoid frontend errors
+## 🎥 Useful YouTube Resources
 
-3. Vite (Project Setup Tool)
+* **React Concepts in 12 Minutes**
+  [https://youtu.be/wIyHSOugGGw](https://youtu.be/wIyHSOugGGw)
 
-Why Vite is used for modern React projects
+* **TypeScript Crash Course**
+  [https://youtu.be/d56mG7DezGs](https://youtu.be/d56mG7DezGs)
 
-How Vite scaffolds a React+TS template
+* **Vite Setup (React + TS)**
+  [https://youtu.be/KCrXgy8qtjM](https://youtu.be/KCrXgy8qtjM)
 
-Running and building Vite projects
+---
 
-🎥 Useful YouTube Resources
+## 📝 Problem Statement
 
-Every React Concept Explained in 12 Minutes
-https://youtu.be/wIyHSOugGGw?si=asMBHl_9ptgKHORV
+Build a simple UI using React + TypeScript:
 
-TypeScript Crash Course
-https://youtu.be/d56mG7DezGs?si=5peWVNxuCX1zSCUU
+Your form must accept:
 
-Vite Project Setup
-https://youtu.be/KCrXgy8qtjM?si=aUTt9CFVVsbkPAuQ
-
-📝 Problem Statement
-
-Build the UI layer of the project:
-A simple React + TypeScript app with a form that accepts:
-
-A text input
-
-A numeric threshold slider
-
-A checkbox
-
-…and displays a mock prediction result on submit.
+* A **text input**
+* A **threshold slider** (0–100)
+* A **checkbox**
+* On submit → display **mock prediction result**
 
 This demonstrates:
 
-Controlled components
+* Controlled components
+* Typed React state
+* Form submission handling
+* Basic fetch-like workflow (mocked for now)
 
-Typed React state
+---
 
-Handling form submissions
+## 🛠️ Task 1 — Project Setup (Vite + React + TS)
 
-Simple fetch workflow (mocked)
+From repo root:
 
-🛠️ Task 1 — Project Setup using Vite
-
-Inside the repo root:
-
+```bash
 mkdir Day-05
 cd Day-05
 npm create vite@latest . -- --template react-ts
 npm install
 npm run dev
+```
 
+Your app will start at:
+➡️ **[http://localhost:5173](http://localhost:5173)**
 
-This starts the app at:
-➡️ http://localhost:5173
+---
 
-🛠️ Task 2 — Create the Typed PredictionForm Component
+## 🛠️ Task 2 — Create the Typed `PredictionForm` Component
 
-Inside:
+Create file:
 
+```
 Day-05/src/components/PredictionForm.tsx
+```
 
+Your component must include:
 
-Implement:
+* Typed state (`useState<{...}>`)
+* Text input
+* Range slider
+* Checkbox
+* Submit handler using a mocked `fetch()`
+* Display of loading + result
 
-Typed state
+---
 
-Text input, slider, checkbox
+## 🛠️ Task 3 — Integrate Component Into App
 
-Mock fetch() submit handler
+Edit:
 
-Loading indicator + result display
-
-🛠️ Task 3 — Integrate Component into App
-
-Modify:
-
+```
 Day-05/src/App.tsx
+```
 
+Import and render the `PredictionForm` so it displays on the main page.
 
-to display the PredictionForm on the page.
+---
 
-📂 Final Folder Structure
+## 📂 Final Folder Structure
 
-Your Day-05/ folder must include:
-
+```
 Day-05/
   README.md
   package.json
@@ -123,36 +125,48 @@ Day-05/
     App.tsx
     components/
       PredictionForm.tsx
+```
 
-💾 Submission Using Feature Branching
+---
 
-Follow the same workflow as Days 1–4.
+## 💾 Submission Workflow (Feature Branching)
 
-1. Synchronize and Create Branch
+### 1. Sync + Create Branch
+
+```bash
 git checkout main
 git pull upstream main
-git checkout -b feat/day-05-<your-name>
+git checkout -b feat/day-05-yourname
+```
 
-2. Commit Your Work
+### 2. Commit Your Work
+
+```bash
 git add Day-05
 git commit -m "feat(day05): React + TypeScript PredictionForm component"
+```
 
-3. Push to Origin
-git push -u origin feat/day-05-<your-name>
+### 3. Push to Origin
 
-4. Create Pull Request
+```bash
+git push -u origin feat/day-05-yourname
+```
 
-From: your feature branch
+### 4. Create Pull Request
 
-To: main of georgeaaron7/bootycamp
+**Base:** `main`
+**From:** your feature branch
 
-Title:
+#### **PR Title**
 
-[D05] <Your Name> - React + TypeScript PredictionForm
+```
+[D05] <Your Name> — React + TypeScript PredictionForm
+```
 
+#### **PR Description**
 
-Description:
-
+```
 Added Day-05 React + TypeScript project.
 Includes typed PredictionForm component, App integration, and mock submit flow.
 Location: Day-05/
+```
