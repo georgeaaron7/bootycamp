@@ -67,7 +67,7 @@ print("Slicing m1[:,0]:", m1[:,0])
 
 
 # =============================================================
-# Part B — Autograd: Define & Verify a Gradient
+# Part B   Autograd: Define & Verify a Gradient
 # =============================================================
 
 print("\n=== Part B: Autograd - Gradient Verification ===")
