@@ -129,7 +129,15 @@ optimiser = optim.Adam(model.parameters() , lr = 0.01)
 model.train()
 
 for n in range(num_epochs):
-    
+    optimiser.zero_grad()
+    pred = model(x_train)
+    loss = loss_func(pred , y_train)
+    loss.backward()
+    optimiser.step()
+    print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {loss.item():.4f}")
+
+
+
 
 # =============================================================
 # Expected Output Summary
