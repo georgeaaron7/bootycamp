@@ -111,7 +111,7 @@ class My_CNN(nn.Module):
 model = My_CNN()
 print(model)
 
-total_parameters = sum(p.numel for p in model.parameters())
+total_parameters = sum(p.numel() for p in model.parameters())
 print("Number of Parameters : " , total_parameters)
 
 # TODO: Train the CNN on a dummy dataset
@@ -136,7 +136,13 @@ for n in range(num_epochs):
     optimiser.step()
     print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {loss.item():.4f}")
 
+model.eval()
 
+with torch.no_grad():
+    outputs = model(x_test)
+    loss_e = loss_func(outputs , y_test)
+    accuracy = (predicted == y_test).sum().item() / y_test.size(0)
+    print(f"Test Loss: {test_loss.item():.4f} - Test Accuracy: {accuracy*100:.2f}%")
 
 
 # =============================================================
