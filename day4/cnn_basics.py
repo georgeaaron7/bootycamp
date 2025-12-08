@@ -94,7 +94,7 @@ class My_CNN(nn.Module):
         super().__init__()
         
         self.conv1 = nn.Conv2d(3 , 6 ,3)
-        self.pool1 = nn.MaxPool2d(2,2)
+        self.pool = nn.MaxPool2d(2,2)
         self.conv2 = nn.Conv2d(6 , 12 , 3)
         self.fc = nn.Linear(12*1*1 , 2)
 
@@ -128,21 +128,29 @@ optimiser = optim.Adam(model.parameters() , lr = 0.01)
 
 model.train()
 
+epoch = 0
+
 for n in range(num_epochs):
     optimiser.zero_grad()
     pred = model(x_train)
     loss = loss_func(pred , y_train)
     loss.backward()
     optimiser.step()
-    print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {loss.item():.4f}")
+    epoch+=1
+    print(f"Epoch {epoch}/{num_epochs} - Train Loss: {loss.item():.4f}")
 
 model.eval()
-
 with torch.no_grad():
-    outputs = model(x_test)
-    loss_e = loss_func(outputs , y_test)
+    test_output = model(x_test)
+    test_loss = loss_func(test_output, y_test)
+
+    # Convert logits → predicted class index
+    _, predicted = torch.max(test_output, 1)
+
     accuracy = (predicted == y_test).sum().item() / y_test.size(0)
-    print(f"Test Loss: {test_loss.item():.4f} - Test Accuracy: {accuracy*100:.2f}%")
+
+print("Test Loss:", test_loss.item())
+print("Accuracy:", accuracy)
 
 
 # =============================================================
