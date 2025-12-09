@@ -113,13 +113,3 @@ manual_grad_x = w + 2 * x
 manual_grad_w = x          
 print("Manual gradient of x:", manual_grad_x)
 print("Manual gradient of w:", manual_grad_w)
-
-
-# =============================================================
-# Expected Output Summary
-# =============================================================
-
-print("\n=== Script Must Print ===")
-print("1. All created tensors")
-print("2. Results of tensor operations")
-print("3. Computed gradients using autograd")
