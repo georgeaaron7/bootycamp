@@ -1,4 +1,4 @@
-# Day 4: Computer Vision Basics — Image Representation & Simple Image Processing
+# Day 12: Computer Vision Basics — Image Representation & Simple Image Processing
 
 Today marks your entry into the world of Computer Vision (CV) - the foundation behind image classification, object detection, face recognition, and everything visual in AI.
 
